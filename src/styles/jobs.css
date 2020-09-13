@@ -1,0 +1,39 @@
+.jobs{
+    color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+.card{
+    display: flex;
+    flex-direction: column;
+    padding: 0.5rem;
+    justify-content: center;
+}
+.fa-user-tie{
+    margin: 10px;
+}
+
+.details-list{
+    color:black;
+    margin: 1rem;
+    list-style: none;
+    border: solid 1px silver;
+    border-radius: 1rem;
+    padding: 1rem;
+    font-weight: bold;
+    background-color: white;
+
+}
+
+.apply{
+    width: 15%;
+    height: 30%;
+    background-color: brown;
+    color: white;
+    border: solid whitesmoke 2px;
+    padding: 0.25rem;
+    font-weight: bold;
+    border-radius: 10%;
+}

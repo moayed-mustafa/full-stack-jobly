@@ -1,0 +1,35 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+/* .nav{
+    border-bottom: white 2px solid;
+} */
+
+.navbar{
+    display: flex;
+    /* padding: 0.25rem; */
+    align-items: center;
+    /* justify-content: flex-end; */
+    background-color:brown;
+    border-top: silver 3px solid;
+    border-bottom: silver 1px solid;
+}
+.nav-list{
+    margin: 1rem;
+    list-style: none;
+    border: solid 1px brown;
+    border-radius: 1rem;
+    padding: 1rem;
+    font-weight: bold;
+    background-color: white;
+
+}
+
+a{
+    color: brown;
+    text-decoration: none;
+}
+.navbar .Logo{
+    margin-right: auto
+}

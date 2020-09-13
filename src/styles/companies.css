@@ -1,0 +1,30 @@
+.companies{
+    color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+.card{
+    display: flex;
+    flex-direction: column;
+    padding: 0.5rem;
+    justify-content: center;
+}
+.fa-building{
+    margin: 10px;
+}
+.name{
+    margin: 20px;
+}
+.details-list{
+    color:black;
+    margin: 1rem;
+    list-style: none;
+    border: solid 1px silver;
+    border-radius: 1rem;
+    padding: 1rem;
+    font-weight: bold;
+    background-color: white;
+
+}

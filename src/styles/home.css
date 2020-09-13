@@ -1,0 +1,16 @@
+.Home{
+
+    display: flex;
+    align-items:flex-end;
+    justify-content: flex-start;
+    padding: 2rem;
+    margin: 2rem 15rem;
+    color: brown;
+    background-color: whitesmoke;
+    width:50%;
+
+}
+
+.small{
+    margin-left:5rem;
+}
