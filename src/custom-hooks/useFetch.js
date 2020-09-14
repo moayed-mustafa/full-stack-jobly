@@ -31,8 +31,20 @@ const FetchData = (setCompanies, setJobs)=> {
 
         return ()=> {mounted = false}
 
-    },[])
+    },[setJobs, setCompanies])
 
 }
+  function FetchJobsByHandle (handle, setter){
+    useEffect(() => {
+        async function getData() {
+            let result = await Api.getCompany(handle)
+            setter(result)
+            return result
 
-export default FetchData
+        }
+        getData()
+
+    }, [])
+}
+
+export  {FetchData, FetchJobsByHandle}

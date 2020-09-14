@@ -9,7 +9,7 @@ import './styles/jobs.css'
 import { BrowserRouter as Router } from 'react-router-dom'
 import Routes from './Routes'
 import Navigation from './SiteNavigation/Nav'
-import FetchData from './custom-hooks/useFetch'
+import {FetchData} from './custom-hooks/useFetch'
 import {StateContext} from './custom-hooks/Context'
 
 

@@ -5,6 +5,8 @@
     justify-content: center;
     text-align: center;
 }
+
+
 .card{
     display: flex;
     flex-direction: column;
@@ -12,7 +14,7 @@
     justify-content: center;
 }
 .fa-user-tie{
-    margin: 10px;
+    margin: auto auto 0.25rem 26rem;
 }
 
 .details-list{
@@ -26,6 +28,15 @@
     background-color: white;
 
 }
+.company-jobs-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+.company-jobs-list > .details-list{
+    width: 33.3%;
+}
 
 .apply{
     width: 15%;
@@ -36,4 +47,10 @@
     padding: 0.25rem;
     font-weight: bold;
     border-radius: 10%;
+    margin: auto auto auto 25rem;
+}
+.card > span{
+    margin: 0.25rem;
+    border: 1px solid whitesmoke;
+    background-color: whitesmoke;
 }

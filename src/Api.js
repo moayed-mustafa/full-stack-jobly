@@ -34,7 +34,7 @@ class JoblyApi {
 
     // making the companies methods
     static async getCompany(handle) {
-      let res = await this.request(`companies/${handle}`);
+      let res = await this.request(`/companies/${handle}`);
       return res.company;
     }
 

@@ -1,19 +1,36 @@
-import React from 'react'
-import {useParams} from 'react-router-dom'
+import React, {useState, useEffect} from 'react'
+import { useParams } from 'react-router-dom'
+import {FetchJobsByHandle} from '../custom-hooks/useFetch'
 
 
-
-// todo: this component do not show company detalis, rather it shows jobs
-//  todo: that are associated with said company
-/*
-    * this will mean taking out the name/handle from the url parameter string
-    * calling a function in API.js to get all jobs associated with the company.
-    * show them bad boys.
-*/
 function Company() {
-    let {company} = useParams()
+    let { company } = useParams()
+    let [data, setData] = useState()
+     FetchJobsByHandle(company, setData)
+
     return (
-        <div>{company}</div>
+    <>
+            {data === undefined ? <h1>Loading</h1> :
+                <div className="company">
+                    <h1 className="company-name">{data.name}</h1>
+                    <p className="company-description">{data.description}</p>
+                    <ul className="company-jobs-list">
+                        {data.jobs.map((job) => (
+                            <li className="details-list" key={job.id} >
+                                <div className="card" >
+                                    <span > <h3 className='title'>{`Title: ${job.title}`}</h3> </span>
+                                    <span className="salary">{`Salary: ${job.salary}`}</span>
+                                    <span className="equity">{`Equity: ${job.equity}`}</span>
+                                    <button className="apply">Apply</button>
+                                </div>
+                            </li>
+
+                        ))}
+                    </ul>
+
+                </div>
+            }
+            </>
     )
 
 }
