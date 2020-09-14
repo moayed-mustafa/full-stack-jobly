@@ -7,12 +7,14 @@ import axios from 'axios'
 class JoblyApi {
 
     // todo: will have to extract the user-token from local storage here
-    // todo: instead of hard coding it.
+    // todo: instead of hard coding
     static async request(endpoint, paramsOrData = {}, verb = "get") {
-      paramsOrData._token = ( // for now, hardcode token for "testing"
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc" +
-      "3RpbmciLCJpc19hZG1pbiI6ZmFsc2UsImlhdCI6MTU1MzcwMzE1M30." +
-      "COmFETEsTxN_VfIlgIKw0bYJLkvbRQNgO1XCSE8NZ0U");
+        //  // for now, hardcode token for "testing"
+        //     paramsOrData._token = (
+        //   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc" +
+        //   "3RpbmciLCJpc19hZG1pbiI6ZmFsc2UsImlhdCI6MTU1MzcwMzE1M30." +
+        //   "COmFETEsTxN_VfIlgIKw0bYJLkvbRQNgO1XCSE8NZ0U");
+        paramsOrData._token = JSON.parse(window.localStorage.getItem("_token"))
 
       console.debug("API Call:", endpoint, paramsOrData, verb);
 
@@ -103,7 +105,7 @@ class JoblyApi {
     // making the users methods
     static async getUser(username) {
         let res = await this.request(`users/${username}`);
-        return res.job;
+        // return res.job;
       }
 
       //----------------------------------------------------------------------------------------------------------------
@@ -112,27 +114,27 @@ class JoblyApi {
           return res.users
       }
           //----------------------------------------------------------------------------------------------------------------
-      // post a company
+      // post a user
     static async signup(data) {
 
-          let res = await this.request('/users', data, "post")
-          return res.job
+          let _token = await this.request('/users', data, "post")
+          return _token
       }
           //----------------------------------------------------------------------------------------------------------------
-      // patch a company
+      // patch a user
       static async updateUser(username) {
           let res = await this.request(`/users/${username}` , "patch")
-          return res.company
+        //   return res.company
       }
           //----------------------------------------------------------------------------------------------------------------
-      // delete a company
+      // delete a user
       static async deleteUser(username) {
            await this.request(`/users/${username}`,"delete")
           // return res.company
       }
 
         //================================================================================================================================================
-        // auth
+        // log in a user
     static async login(data) {
         let _token = await this.request('/login', data, "post")
         return _token

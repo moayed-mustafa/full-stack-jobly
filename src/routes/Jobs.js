@@ -1,13 +1,15 @@
 import React, {useContext} from 'react'
-import {StateContext} from '../custom-hooks/Context'
+import {StateContext, LoggedInContext} from '../custom-hooks/Context'
 
 
 
 function Jobs() {
     let { jobs } = useContext(StateContext)
+    let{logged} = useContext(LoggedInContext)
 
 
     return (
+        logged?
         <div className="jobs">
             <ul className="jobs-list">
                 {jobs.map((job) => (
@@ -28,7 +30,7 @@ function Jobs() {
             </ul>
 
 
-        </div>
+        </div> : <h1>You must log in first</h1>
     )
 
 }

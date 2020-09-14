@@ -1,17 +1,23 @@
 import React, {useContext} from 'react'
 import { Link } from 'react-router-dom'
-import {StateContext} from '../custom-hooks/Context'
+import {StateContext, LoggedInContext} from '../custom-hooks/Context'
+
 
 
 
 
 function Companies() {
     let { companies } = useContext(StateContext)
+    let { logged } = useContext(LoggedInContext)
+    console.log(logged)
+
 
     return (
-        <div className="companies">
-            <ul className="companies-list">
-                {companies.map((company) => (
+
+        logged?
+                < div className = "companies" >
+        <ul className="companies-list">
+            {companies.map((company) => (
                 <Link to={`/companies/${company.handle}`} key={company.handle}>
                     <div className="card" >
                         <li className="details-list" >
@@ -19,14 +25,15 @@ function Companies() {
                             <div className="details">{company.description}</div>
                             <i className="fas fa-building fa-2x"></i>
                         </li>
-                        </div>
+                    </div>
                 </Link>
 
-                ))}
-            </ul>
+            ))}
+        </ul>
 
 
-        </div>
+                </div >: <h1>you need to log in first </h1>
+
     )
 
 }
