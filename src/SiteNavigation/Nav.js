@@ -5,8 +5,9 @@ const Navigation = () => {
     <div className="nav">
       <ul className="navbar">
         <li className="Logo nav-list"> <NavLink exact to="/" className="navbar-brand">Jobly</NavLink></li>
-        <li className="nav-list"> <NavLink to="/companies">companies</NavLink> </li>
-        <li className="nav-list"> <NavLink to="/jobs">jobs</NavLink></li>
+        <li className="nav-list"> <NavLink to="/companies">Companies</NavLink> </li>
+        <li className="nav-list"> <NavLink to="/jobs">Jobs</NavLink></li>
+        <li className="nav-list"> <NavLink to="/login">Login</NavLink></li>
            {/* <NavItem>
           <NavLink to="/add">Add Drink/Snack</NavLink>
         </NavItem> */}

@@ -3,7 +3,7 @@ import {Switch, Route } from 'react-router-dom'
 import Companies from './routes/Companies'
 import Company from './routes/Company'
 import Jobs from './routes/Jobs'
-// import Job from './Job'
+import Login from './routes/Login'
 // import Login from './Login'
 // import EditUser from './EditUser'
 import Home from './routes/Home'
@@ -39,14 +39,15 @@ const Routes = () => {
                     <Route exact path="/jobs/">
                         <Jobs/>
                     </Route>
+                    <Route path={["/login", "/users/"]}>
+
+                        <Login/>
+                    </Route>
 
                     {/* <Route exact path="/jobs/:job">
                         <Job/>
                     </Route> */}
 
-                    {/* <Route path={["/login", "/users/"]}>
-                        <Login/>
-                    </Route> */}
 
                     {/* <Route exact path="/users/:username">
                         <EditUser/>

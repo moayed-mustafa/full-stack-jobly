@@ -1,8 +1,10 @@
 -- tasks:-
 
-### Add state to jobs and companies.
-### use Api.js to fetch data and store it in state.
-### display that data instead of the dummy data you have now.
-### make a loading icon appear while fetching data.
-### use a custom hook to fetch data.
+
 ### Authentication.
+
+
+### build a react component for login/signup
+### there is going to be a lot of conditional rendering here
+#### for instance: - use is logged in: show logout on the navbar and vice versa
+### login/signup forms are also conditional, you should only show login if the're is no user in the localstorage.

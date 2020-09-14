@@ -6,7 +6,8 @@ import axios from 'axios'
     */
 class JoblyApi {
 
-    // MAIN METHOD
+    // todo: will have to extract the user-token from local storage here
+    // todo: instead of hard coding it.
     static async request(endpoint, paramsOrData = {}, verb = "get") {
       paramsOrData._token = ( // for now, hardcode token for "testing"
       "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc" +
