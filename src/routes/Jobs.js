@@ -5,7 +5,9 @@ import {StateContext, LoggedInContext} from '../custom-hooks/Context'
 
 function Jobs() {
     let { jobs } = useContext(StateContext)
-    let{logged} = useContext(LoggedInContext)
+    let { logged, setLogged } = useContext(LoggedInContext)
+
+
 
 
     return (

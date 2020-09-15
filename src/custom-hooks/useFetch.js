@@ -1,4 +1,5 @@
 import {useEffect} from 'react'
+import { useParams } from 'react-router-dom'
 import Api from '../Api'
 
 
@@ -45,6 +46,18 @@ const FetchData = (setCompanies, setJobs)=> {
         getData()
 
     }, [])
+  }
+
+
+//   todo: make a function to update the user
+function updateUser(data) {
+    async function update() {
+        let username = JSON.parse(window.localStorage.getItem("username"))
+        let result = await Api.updateUser(data, username)
+        return result
+    }
+    return update()
 }
 
-export  {FetchData, FetchJobsByHandle}
+
+export  {FetchData, FetchJobsByHandle, updateUser}

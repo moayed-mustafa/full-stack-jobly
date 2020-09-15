@@ -8,7 +8,8 @@ import {StateContext, LoggedInContext} from '../custom-hooks/Context'
 
 function Companies() {
     let { companies } = useContext(StateContext)
-    let { logged } = useContext(LoggedInContext)
+    let { logged, setLogged } = useContext(LoggedInContext)
+
     console.log(logged)
 
 

@@ -67,3 +67,25 @@
 ::placeholder{
     color: white
 }
+.login{
+    width: 15%;
+    height: 30%;
+    background-color: brown;
+    color: white;
+    border: solid whitesmoke 2px;
+    padding: 0.25rem;
+    font-weight: bold;
+    border-radius: 10%;
+}
+.small{
+    margin: 10px;
+}
+.flash-msg{
+    background-color: rgb(175, 91, 91);
+    color: white;
+    text-align: left;
+    padding: 0.5rem;
+    margin-top: 1rem;
+    width: 50%;
+    font-weight: bold;
+}

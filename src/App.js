@@ -21,14 +21,6 @@ function App() {
   const [jobs, setJobs] = useState()
   const [logged, setLogged] = useState(false)
 
-  // useEffect(() => {
-  //   if (JSON.parse(window.localStorage.getItem("_token")) !== null) {
-  //      setLogged(logged => logged = true)
-  //    }
-  // }, [logged])
-  // useFetch to get companies, jobs
-  // FetchData(setCompanies, setJobs)
-
   return (
     <div className="App">
       <Router>

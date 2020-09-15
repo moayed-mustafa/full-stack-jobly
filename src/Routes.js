@@ -8,19 +8,11 @@ import Logout from './routes/Logout'
 // import Login from './Login'
 // import EditUser from './EditUser'
 import Home from './routes/Home'
+import Profile from './routes/Profile'
 // import {StateContext} from './custom-hooks/Context'
 
 
 const Routes = () => {
-    // game plan for passing state to my routes components:
-    // - I donn't want to initiate state on Routes, to keep things simple and one-dimensional.
-    // to solve this I will need a context
-    // I'll set the state on the App component
-    //  I'll then wrap the routes component with context
-    // finally I'll unpack it on this component and pass it as props to whatever component that is being used
-
-    //  let {companies, jobs} = useContext(StateContext)
-
     return (
 
                 <Switch>
@@ -44,7 +36,10 @@ const Routes = () => {
                         <Login/>
                     </Route>
                     <Route exact path="/logout">
-                <Logout />
+                        <Logout />
+                    </Route>
+                    <Route exact path="/profile">
+                        <Profile />
                     </Route>
 
                     {/* <Route exact path="/jobs/:job">

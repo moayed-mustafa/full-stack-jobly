@@ -7,8 +7,10 @@ function Logout() {
 
     let { logged, setLogged } = useContext(LoggedInContext)
 
-    window.localStorage.removeItem("_token")
-    // setLogged(logged => logged = false)
+    // window.localStorage.removeItem("_token")
+    let keysToRemove = ["_token", "user"]
+    keysToRemove.map(key=> window.localStorage.removeItem(key))
+    setLogged(logged => logged = false)
 
     const history = useHistory()
     history.push('/')

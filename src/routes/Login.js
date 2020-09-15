@@ -3,7 +3,7 @@ import {useHistory} from 'react-router-dom'
 import '../styles/login.css'
 // todo: figure this out later
 // import { loginFrom, signupform } from './Forms'
-import { login } from '../custom-hooks/useAuth'
+import { login, signup} from '../custom-hooks/useAuth'
 import {LoggedInContext} from '../custom-hooks/Context'
 
 
@@ -24,10 +24,12 @@ const Login = () => {
             password : "",
     }
 
-    // SET STATES FOR THE FORMS
+    // SET STATES FOR THE FORMS AND THE FLASH MESSAGES FOR ERRORS
     const [clickedSingup, setClickedSingup] = useState('login')
     const [loginFormData, setLoginForm] = useState(login_initial)
     const [signupFormData, setSignupForm] = useState(signUp_initial)
+    const [flashState, setFlashState] = useState(false)
+    const [flashMessage, setFlashMessage] = useState()
 
     // UPDATE FORMS ON TYPE
     function updateLogin(e) {
@@ -46,32 +48,55 @@ const Login = () => {
     }
 
 
-    let { logged, setLogged } = useContext(LoggedInContext)
+    // let { logged, setLogged } = useContext(LoggedInContext)
     const history = useHistory()
+
+    // localstorage function
+    function addToLocalStorage(user) {
+        window.localStorage.setItem("_token", JSON.stringify(user.token))
+        const user_data = {
+            username: user.username,
+            first_name: user.first_name,
+            last_name: user.last_name,
+            email: user.email
+        }
+        // SET USERNAME AND USER IN LOCAL STORAGE
+        window.localStorage.setItem("user", JSON.stringify(user_data))
+        window.localStorage.setItem("username", JSON.stringify(user.username))
+    }
     // SUBMIT
     async function submitLogin(e) {
 
-        e.preventDefault()
-        console.log('logging in...')
-        let _token = await login(loginFormData)
-        window.localStorage.setItem("_token", JSON.stringify(_token.token))
-        console.log(_token)
+        try {
 
-        setLoginForm(login_initial)
-        // setLogged(!logged)
-        history.push('/')
+            e.preventDefault()
+            console.log('logging in...')
+            let user = await login(loginFormData)
+            addToLocalStorage(user)
+            setLoginForm(login_initial)
+            history.push('/')
+        } catch (e) {
+            setFlashState(true)
+            setFlashMessage(message => message = e[0])
+        }
 
-        // redirect to home
     }
-    function submitSignup(e) {
-        // todo: make a request to the api for signing up
-        // todo: this should call Api.signup and return a token
-        e.preventDefault()
-        console.log('signing up...')
+    async function submitSignup(e) {
 
-        setLoginForm(login_initial)
-        setLogged(!logged)
-        setSignupForm(signUp_initial)
+        try {
+            e.preventDefault()
+            console.log('signing up...')
+            setLoginForm(login_initial)
+            let user = await signup(signupFormData)
+            addToLocalStorage(user)
+
+            setSignupForm(signUp_initial)
+            history.push('/')
+
+        } catch (e) {
+            setFlashState(true)
+            setFlashMessage(message => message = e[0])
+        }
     }
 
     // RENDER
@@ -106,6 +131,7 @@ const Login = () => {
 
                             </input>
                         <button>Login</button>
+                        {flashState ? <span className="flash-msg">{flashMessage}</span>: null}
                     </form>
 
                     :
@@ -155,6 +181,7 @@ const Login = () => {
                             onChange={updateSignup}
                         ></input>
                         <button>Signup</button>
+                        {flashState ? <span className="flash-msg">{flashMessage}</span>: null}
                     </form>
                 }
 
