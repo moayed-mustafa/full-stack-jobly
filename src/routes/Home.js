@@ -20,7 +20,7 @@ function Home() {
 
     // },[logged])
     // useFetch to get companies, jobs
-    if (logged) FetchData(setCompanies, setJobs);
+    // if (logged) FetchData(setCompanies, setJobs);
     let username = JSON.parse(window.localStorage.getItem("username"))
   return (
     <div className="Home">

@@ -10,9 +10,6 @@ import {FetchData} from '../custom-hooks/useFetch'
 function Jobs() {
     let { jobs } = useContext(StateContext)
     let { logged, setLogged } = useContext(LoggedInContext)
-    // let history = useHistory()
-    // const [state, updateState] = useState(false)
-
 
 
     function ApplyForJob(e) {
@@ -20,6 +17,7 @@ function Jobs() {
         applyForJob(e.target.id)
 
     }
+
 
 
 

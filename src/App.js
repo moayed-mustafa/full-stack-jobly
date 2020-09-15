@@ -20,6 +20,17 @@ function App() {
   const [companies, setCompanies] = useState()
   const [jobs, setJobs] = useState()
   const [logged, setLogged] = useState(false)
+  FetchData(setCompanies, setJobs);
+
+  useEffect(() => {
+    if (JSON.parse(window.localStorage.getItem("_token")) !== null) {
+      setLogged(true)
+   }
+   else {
+     setLogged(false)
+   }
+
+},[logged])
 
   return (
     <div className="App">
