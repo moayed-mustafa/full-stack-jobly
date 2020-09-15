@@ -1,11 +1,25 @@
-import React, {useContext} from 'react'
-import {StateContext, LoggedInContext} from '../custom-hooks/Context'
+import React, { useContext, useEffect, useState, useCallback } from 'react'
+import {useHistory} from 'react-router-dom'
+import { StateContext, LoggedInContext } from '../custom-hooks/Context'
+import { applyForJob } from '../custom-hooks/useFetch'
+import {FetchData} from '../custom-hooks/useFetch'
+
 
 
 
 function Jobs() {
     let { jobs } = useContext(StateContext)
     let { logged, setLogged } = useContext(LoggedInContext)
+    // let history = useHistory()
+    // const [state, updateState] = useState(false)
+
+
+
+    function ApplyForJob(e) {
+        console.log(e.target.id)
+        applyForJob(e.target.id)
+
+    }
 
 
 
@@ -24,7 +38,8 @@ function Jobs() {
                                 <div className="details">{job.description}</div>
                             <i className="fas fa-user-tie fa-3x"></i>
 
-                            <button className="apply">Apply</button>
+                            {job.state === "applied" ? <button id={job.id} className="apply" disabled >Applied</button> :
+                                <button onClick={ApplyForJob} id={job.id} className="apply">Apply</button>}
                         </div>
                     </li>
 

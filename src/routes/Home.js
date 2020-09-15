@@ -10,13 +10,15 @@ function Home() {
 
 
 
+      // useEffect(() => {
+        if (JSON.parse(window.localStorage.getItem("_token")) !== null) {
+           setLogged(true)
+        }
+        else {
+          setLogged(false)
+        }
 
-    if (JSON.parse(window.localStorage.getItem("_token")) !== null) {
-       setLogged(true)
-    }
-    else {
-      setLogged(false)
-    }
+    // },[logged])
     // useFetch to get companies, jobs
     if (logged) FetchData(setCompanies, setJobs);
     let username = JSON.parse(window.localStorage.getItem("username"))

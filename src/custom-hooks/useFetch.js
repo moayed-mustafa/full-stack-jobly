@@ -59,5 +59,16 @@ function updateUser(data) {
     return update()
 }
 
+function applyForJob(id) {
+    async function applying() {
+        // call the username from localstorage
+        let data = { username:JSON.parse(window.localStorage.getItem("username")) }
+         await Api.apply(id, data)
 
-export  {FetchData, FetchJobsByHandle, updateUser}
+    }
+    applying()
+
+}
+
+
+export  {FetchData, FetchJobsByHandle, updateUser, applyForJob}

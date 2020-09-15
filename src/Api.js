@@ -83,13 +83,15 @@ class JoblyApi {
       // patch a job
       static async updateJob(data) {
           let res = await this.request('/jobs', data, "patch")
-          return res.company
+          return res
       }
           //----------------------------------------------------------------------------------------------------------------
       // apply for a job
-      static async apply(id) {
-          let res = await this.request(`/jobs/${id}/apply`, "post")
-          return res.company
+    static async apply(id, data) {
+        //   username = {username: username, state: "applied"}
+        console.log(id, data)
+          let res = await this.request(`/jobs/${id}/apply`, data, "post")
+          return res
       }
           //----------------------------------------------------------------------------------------------------------------
       // delete a job
@@ -101,7 +103,6 @@ class JoblyApi {
     // making the users methods
     static async getUser(username) {
         let res = await this.request(`users/${username}`);
-        // return res.job;
       }
 
       //----------------------------------------------------------------------------------------------------------------

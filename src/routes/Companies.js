@@ -1,16 +1,18 @@
 import React, {useContext} from 'react'
 import { Link } from 'react-router-dom'
-import {StateContext, LoggedInContext} from '../custom-hooks/Context'
+import { StateContext, LoggedInContext } from '../custom-hooks/Context'
+import {FetchData} from '../custom-hooks/useFetch'
+
 
 
 
 
 
 function Companies() {
-    let { companies } = useContext(StateContext)
+    let { companies,setJobs, setCompanies }  = useContext(StateContext)
     let { logged, setLogged } = useContext(LoggedInContext)
 
-    console.log(logged)
+    // console.log(logged)
 
 
     return (
