@@ -3,9 +3,13 @@ import { useParams } from 'react-router-dom'
 import Api from '../Api'
 
 
+// *todo: you're making two functions inside most of the funcitons that interact with
+//  * the api, maybe you have done this thinking that you'll not have to deal with
+// * promises directly, but you're doing that anyways on your submit functions
+// * anytime you're calling those function onSubmit, so remove those!
+
 const FetchData = (setCompanies, setJobs)=> {
 
-    useEffect(() => {
         console.log('...fetching')
         let mounted = true
 
@@ -32,24 +36,23 @@ const FetchData = (setCompanies, setJobs)=> {
 
         return ()=> {mounted = false}
 
-    },[setJobs, setCompanies])
 
-}
+    }
   function FetchJobsByHandle (handle, setter){
-    useEffect(() => {
-        async function getData() {
+      console.log('FetchJobsByHandle')
+      async function getData() {
             let result = await Api.getCompany(handle)
+            console.log(result)
             setter(result)
             return result
 
         }
         getData()
 
-    }, [])
   }
 
 
-//   todo: make a function to update the user
+
 function updateUser(data) {
     async function update() {
         let username = JSON.parse(window.localStorage.getItem("username"))
@@ -70,5 +73,15 @@ function applyForJob(id) {
 
 }
 
+//   todo: make a function to get a company
+async function getCompany(handle) {
+    console.log('getCompany')
+    // async function getOneCompany() {
+       let result = await Api.getCompany(handle)
+        return result
+    // }
+    // return getOneCompany()
+}
 
-export  {FetchData, FetchJobsByHandle, updateUser, applyForJob}
+
+export  {FetchData, FetchJobsByHandle, updateUser, applyForJob, getCompany}

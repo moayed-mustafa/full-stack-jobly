@@ -14,5 +14,15 @@ async function signup(data) {
 
 }
 
+function isLogged() {
+    if (JSON.parse(window.localStorage.getItem("_token")) !== null) {
+       return true
+    }
+    else {
+      return false
+    }
 
-export {login, signup}
+  }
+
+
+export {login, signup, isLogged}

@@ -1,8 +1,8 @@
 import React, { useState, useContext } from 'react'
 import {useHistory} from 'react-router-dom'
 import '../styles/login.css'
-// todo: figure this out later
-// import { loginFrom, signupform } from './Forms'
+// todo: move the forms into their own components
+
 import { login, signup} from '../custom-hooks/useAuth'
 import {LoggedInContext} from '../custom-hooks/Context'
 
@@ -48,7 +48,6 @@ const Login = () => {
     }
 
 
-    // let { logged, setLogged } = useContext(LoggedInContext)
     const history = useHistory()
 
     // localstorage function
@@ -111,6 +110,7 @@ const Login = () => {
             </span>
 
                 {clickedSingup === 'login' ?
+
 
                     <form className="form" onSubmit={submitLogin}>
                         <label htmlFor="username">Username:</label>

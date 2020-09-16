@@ -15,32 +15,35 @@ import {StateContext, LoggedInContext} from './custom-hooks/Context'
 
 
 function App() {
+  //  * got rid of the logged state
 
   // inititate state
   const [companies, setCompanies] = useState()
   const [jobs, setJobs] = useState()
-  const [logged, setLogged] = useState(false)
-  FetchData(setCompanies, setJobs);
+  // const [logged, setLogged] = useState(false)
 
-  useEffect(() => {
-    if (JSON.parse(window.localStorage.getItem("_token")) !== null) {
-      setLogged(true)
-   }
-   else {
-     setLogged(false)
-   }
 
-},[logged])
+  // useEffect(() => {
+  //   if (JSON.parse(window.localStorage.getItem("_token")) !== null) {
+  //     setLogged(true)
+  //  }
+  //  else {
+  //    setLogged(false)
+  //  }
+
+  // })
+  // get the data and update the state
+  // if(logged)FetchData(setCompanies, setJobs);
 
   return (
     <div className="App">
       <Router>
-        <LoggedInContext.Provider value={{ logged, setLogged }}>
-          <Navigation />
+        {/* <LoggedInContext.Provider value={{ logged, setLogged }}> */}
         <StateContext.Provider value={{companies, jobs, setJobs, setCompanies}}>
+          <Navigation />
         <Routes />
         </StateContext.Provider>
-        </LoggedInContext.Provider>
+        {/* </LoggedInContext.Provider> */}
     </Router>
     </div>
 

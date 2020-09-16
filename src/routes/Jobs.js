@@ -2,15 +2,26 @@ import React, { useContext, useEffect, useState, useCallback } from 'react'
 import {useHistory} from 'react-router-dom'
 import { StateContext, LoggedInContext } from '../custom-hooks/Context'
 import { applyForJob } from '../custom-hooks/useFetch'
-import {FetchData} from '../custom-hooks/useFetch'
+import { FetchData } from '../custom-hooks/useFetch'
+import { isLogged } from '../custom-hooks/useAuth'
+import SearchFrom from '../forms/SearchFrom'
+
+
 
 
 
 
 function Jobs() {
-    let { jobs } = useContext(StateContext)
-    let { logged, setLogged } = useContext(LoggedInContext)
+    // * maybe it's better to pass down jobs as a prop instead of all this hustling!
+    //  * to have the applied jobs reflect their new state on click
+    //  * create a new state that holds the current users's jobs
+    //  * add the new job to the state onClick which will cause a re-render
+    //  * same goes for jobs on the companies/company route
 
+    console.log("rendering jobs")
+    let { jobs,setJobs, setCompanies  } = useContext(StateContext)
+
+    // let { logged, setLogged } = useContext(LoggedInContext)
 
     function ApplyForJob(e) {
         console.log(e.target.id)
@@ -18,12 +29,22 @@ function Jobs() {
 
     }
 
+    const logged = isLogged()
+     // todo: this is not making any difference, mainly, my app still crashes
+    // if (logged) FetchData(setCompanies, setJobs);
+    useEffect(() => {
+        if (logged) FetchData(setCompanies, setJobs);
+
+      }, [setCompanies, setJobs])
+
 
 
 
 
     return (
-        logged?
+        logged ?
+            <div>
+            <SearchFrom/>
         <div className="jobs">
             <ul className="jobs-list">
                 {jobs.map((job) => (
@@ -42,8 +63,8 @@ function Jobs() {
                     </li>
 
                 ))}
-            </ul>
-
+                    </ul>
+        </div>
 
         </div> : <h1>You must log in first</h1>
     )

@@ -1,26 +1,34 @@
 import React,{useContext , useEffect} from 'react';
-import { StateContext,LoggedInContext } from '../custom-hooks/Context'
-import {FetchData} from '../custom-hooks/useFetch'
+import { StateContext } from '../custom-hooks/Context'
+import { FetchData } from '../custom-hooks/useFetch'
+import { NavLink } from 'react-router-dom'
+import {isLogged} from '../custom-hooks/useAuth'
 
 
 function Home() {
 
-  let { logged, setLogged} = useContext(LoggedInContext)
+  // let { logged, setLogged} = useContext(LoggedInContext)
   let { setJobs, setCompanies } = useContext(StateContext)
 
 
+  // function isLogged() {
+  //   if (JSON.parse(window.localStorage.getItem("_token")) !== null) {
+  //      return true
+  //   }
+  //   else {
+  //     return false
+  //   }
 
-      // useEffect(() => {
-        if (JSON.parse(window.localStorage.getItem("_token")) !== null) {
-           setLogged(true)
-        }
-        else {
-          setLogged(false)
-        }
+  // }
 
-    // },[logged])
     // useFetch to get companies, jobs
-    // if (logged) FetchData(setCompanies, setJobs);
+  const logged = isLogged()
+  useEffect(() => {
+    if (logged) FetchData(setCompanies, setJobs);
+
+  }, [setCompanies, setJobs])
+
+  console.log(logged)
     let username = JSON.parse(window.localStorage.getItem("username"))
   return (
     <div className="Home">
@@ -34,7 +42,7 @@ function Home() {
           <>
             <h1>Welcome to Jobly</h1>
             <p className="small"><small>log in for a chance at your dream job</small></p>
-            <a className="login" href="/login">Login</a>
+            <NavLink className="login" to="/login">Login</NavLink>
         </>}
 
 

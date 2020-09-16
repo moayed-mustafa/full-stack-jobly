@@ -1,13 +1,20 @@
 import React,{useEffect, useState, useContext} from 'react'
 import { NavLink } from 'react-router-dom'
-import {LoggedInContext} from '../custom-hooks/Context'
+// import { StateContext } from '../custom-hooks/Context'
+import { isLogged } from '../custom-hooks/useAuth'
+// import { FetchData } from '../custom-hooks/useFetch'
+
+
 
 
 
 
 const Navigation = () => {
 
-  let {logged, setLogged} = useContext(LoggedInContext)
+  // let {logged, setLogged} = useContext(LoggedInContext)
+  const logged = isLogged()
+  console.log(logged)
+
   return (
     <div className="nav">
       <ul className="navbar">

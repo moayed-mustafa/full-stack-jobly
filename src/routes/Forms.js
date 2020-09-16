@@ -1,4 +1,5 @@
 import React from 'react'
+// todo: make those two seperate components
 
 const loginForm = <form className="form">
 <label htmlFor="username">Username:</label>

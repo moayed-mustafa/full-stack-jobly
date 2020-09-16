@@ -9,10 +9,10 @@ import { StateContext,LoggedInContext } from '../custom-hooks/Context'
 function Company() {
     let { company } = useParams()
     let [data, setData] = useState()
-    // useEffect(() => {
+    useEffect(() => {
         FetchJobsByHandle(company, setData)
 
-    // },[setData])
+    },[setData])
 
     function ApplyForJob(e) {
         console.log(e.target.id)

@@ -1,7 +1,10 @@
-import React, {useContext} from 'react'
+import React, {useContext, useEffect} from 'react'
 import { Link } from 'react-router-dom'
-import { StateContext, LoggedInContext } from '../custom-hooks/Context'
-import {FetchData} from '../custom-hooks/useFetch'
+import { StateContext} from '../custom-hooks/Context'
+import { FetchData } from '../custom-hooks/useFetch'
+import { isLogged } from '../custom-hooks/useAuth'
+import SearchFrom from '../forms/SearchFrom'
+
 
 
 
@@ -10,15 +13,23 @@ import {FetchData} from '../custom-hooks/useFetch'
 
 function Companies() {
     let { companies,setJobs, setCompanies }  = useContext(StateContext)
-    let { logged, setLogged } = useContext(LoggedInContext)
+    // let { logged, setLogged } = useContext(LoggedInContext)
 
+    let logged = isLogged()
     // console.log(logged)
+    // todo: this is not making any difference, mainly, my app still crashes
+    useEffect(() => {
+        if (logged) FetchData(setCompanies, setJobs);
+
+      }, [setCompanies, setJobs])
 
 
     return (
 
-        logged?
-                < div className = "companies" >
+        logged ?
+            <>
+        <SearchFrom/>
+        < div className = "companies" >
         <ul className="companies-list">
             {companies.map((company) => (
                 <Link to={`/companies/${company.handle}`} key={company.handle}>
@@ -35,7 +46,10 @@ function Companies() {
         </ul>
 
 
-                </div >: <h1>you need to log in first </h1>
+                </div >
+                </>
+
+            : <h1>you need to log in first </h1>
 
     )
 

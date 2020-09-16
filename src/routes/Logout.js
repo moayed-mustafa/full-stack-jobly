@@ -1,19 +1,22 @@
 import React, {useContext} from 'react'
-import { LoggedInContext } from '../custom-hooks/Context'
-import {useHistory} from 'react-router-dom'
+// import { LoggedInContext } from '../custom-hooks/Context'
+import { useHistory } from 'react-router-dom'
+import {isLogged} from '../custom-hooks/useAuth'
+
 
 
 function Logout() {
 
-    let { logged, setLogged } = useContext(LoggedInContext)
+    // let { logged, setLogged } = useContext(LoggedInContext)
 
     // window.localStorage.removeItem("_token")
-    let keysToRemove = ["_token", "user"]
+    let keysToRemove = ["_token", "user", "username"]
     keysToRemove.map(key=> window.localStorage.removeItem(key))
-    setLogged(logged => logged = false)
+    // setLogged(logged => logged = false)
+
 
     const history = useHistory()
-    history.push('/')
+    history.push('/login')
 
 
     return (

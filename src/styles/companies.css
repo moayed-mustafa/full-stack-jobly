@@ -30,3 +30,33 @@
 
 
 }
+.form-div{
+    background-color: rgb(68, 57, 117);
+    /* border: solid black 1px; */
+    display: inline;
+}
+.form-data{
+    display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: center;
+
+  padding: 1rem;
+}
+
+.form-data >input{
+    width: 80%;
+    height: 1.5rem;
+}
+.form-data > .search{
+    width: 5rem;
+    height: 2rem;
+    background-color: brown;
+    color: white;
+    border: solid whitesmoke 2px;
+    padding: 0.75rem;
+    font-weight: bold;
+    /* border-radius: 10%; */
+    text-align: justify;
+    margin-left: 0.5rem;
+}

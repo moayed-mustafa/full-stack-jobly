@@ -4,14 +4,13 @@
 ### Authentication.
 
 
-### figure out the login/ signup flow.
-### change the navbar to reflect that.
-###
+### make components for the forms, maybe put them on their own directory
+### make the search bar on caompanies and jobs
+### figure out the apply button re-render
 
 
-
-## Authentication Flow:-
-#### bind the forms to a state
-#### onSubmit: ship the data from the form to the backend api
-####  abstract this operation : do it on Api.js
-### take the token returned from the backend and store it on localstorage
+## The problem with authentication:-
+### I'm using the home component to check for the user session in local storage and then
+### set a state that reflects a login position, the problem is that, when the page reloads, the
+### state changes, which means it will be returned to false regardless of user session being available or
+### not
